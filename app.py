@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 
 pd.set_option('display.max_colwidth', -1)
-data = pd.read_csv('F:\My Data Science Projects\Recipe_Prediction\indian_food.csv')
+data = pd.read_csv('indian_food.csv')
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.stem import PorterStemmer
