@@ -8,7 +8,7 @@ Created on Tue Feb 16 22:45:52 2021
 import pandas as pd
 import numpy as np
 import nltk
-nltk.download ()
+
 
 pd.set_option('display.max_colwidth', -1)
 data = pd.read_csv('indian_food.csv')
