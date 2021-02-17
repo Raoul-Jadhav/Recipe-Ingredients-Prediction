@@ -107,7 +107,7 @@ def predict_ingredient():
         output,prep_time,cook_time,course,state = recommend(text)
         return render_template('index1.html',r=output,pt=prep_time,ct=cook_time,c=str(course),s=state)
        except:
-        return render_template('index1.html',r='Sorry Internal Error..! Try with another dish..!',pt='',ct='',c='',s='')
+        return render_template('index1.html',r='',pt='Sorry Internal Error..! Try with another dish..!',ct='',c='',s='')
    
     
    
