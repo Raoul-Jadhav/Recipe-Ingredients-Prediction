@@ -101,10 +101,13 @@ def home():
     return render_template('index1.html')
 
 @app.route('/predict_ingredient',methods=['POST'])
-def predict_ingredient():
+def predict_ingredient():    
        text = request.form['dish']
-       output,prep_time,cook_time,course,state = recommend(text)
-       return render_template('index1.html',r=output,pt=prep_time,ct=cook_time,c=str(course),s=state)
+       try:
+        output,prep_time,cook_time,course,state = recommend(text)
+        return render_template('index1.html',r=output,pt=prep_time,ct=cook_time,c=str(course),s=state)
+       except:
+        return render_template('index1.html',r='Sorry Internal Error..! Try with another dish..!',pt='',ct='',c='',s='')
    
     
    
