@@ -7,20 +7,49 @@ Created on Tue Feb 16 22:45:52 2021
 
 import pandas as pd
 import numpy as np
+import nltk
+nltk.download ()
 
 pd.set_option('display.max_colwidth', -1)
-data = pd.read_csv('indian_food.csv')
+data = pd.read_csv('F:\My Data Science Projects\Recipe_Prediction\indian_food.csv')
 
 from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.stem import PorterStemmer
+from nltk.corpus import stopwords
+import re
 
-vectorizer = TfidfVectorizer(min_df=3,  max_features=None, 
-            strip_accents='unicode', analyzer='word',token_pattern=r'\w{1,}',
-            ngram_range=(1, 3),
-            stop_words = 'english')
-X = vectorizer.fit_transform(data.name).toarray()
+# Cleaning the data
+corpus = []
+ps = PorterStemmer()
+
+for i in range(0,data.shape[0]):
+ # Cleaning special character from the message
+    dish_name = re.sub(pattern='[^a-zA-Z]', repl=' ', string=data.name[i])
+    
+ # Converting the entire message into lower case  
+    message = dish_name.lower()
+    
+ # Tokenizing the review by words
+    words = dish_name.split()   
+ 
+ # Removing the stop words
+    words = [word for word in words if word not in set(stopwords.words('english'))]
+    
+ # Stemming the words
+    words = [ps.stem(word) for word in words]
+
+ # Joining the stemmed words
+    dish_name = ' '.join(words)
+
+ # Building a corpus of messages
+    corpus.append(dish_name)
 
 
-print(vectorizer.get_feature_names())
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(corpus).toarray()
+
+
+#print(vectorizer.get_feature_names())
 
 from sklearn.metrics.pairwise import sigmoid_kernel
 # Compute the sigmoid kernel
@@ -66,7 +95,7 @@ def recommend(title, sig=sig):
 from flask import Flask,request,render_template
 app = Flask(__name__)
 
-@app.route('/',methods=['GET'])
+@app.route('/home',methods=['GET'])
 def home():
     return render_template('index1.html')
 
