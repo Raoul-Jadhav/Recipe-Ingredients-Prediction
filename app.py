@@ -11,7 +11,7 @@ import nltk
 nltk.download ()
 
 pd.set_option('display.max_colwidth', -1)
-data = pd.read_csv('F:\My Data Science Projects\Recipe_Prediction\indian_food.csv')
+data = pd.read_csv('indian_food.csv')
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.stem import PorterStemmer
@@ -95,7 +95,7 @@ def recommend(title, sig=sig):
 from flask import Flask,request,render_template
 app = Flask(__name__)
 
-@app.route('/home',methods=['GET'])
+@app.route('/',methods=['GET'])
 def home():
     return render_template('index1.html')
 
