@@ -7,4 +7,8 @@
 <h3><p>Reverse mapping of indices and dish name are created. and preditions are done using pairwsie similarity scores.</p></h3>
 <h3>Flask Web Framework is used for deployment and application is hosted on Heroku server.</h3>
 <img src="/Flask.PNG" alt="" width="500" height="300">
+
+# Screens
+<img src="/Screen1.png" alt="" width="1200" height="450">
+<img src="/Screen2.png" alt="" width="1200" height="450">
 demo- https://recipeingredientsprediction.herokuapp.com/
