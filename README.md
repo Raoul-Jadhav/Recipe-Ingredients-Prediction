@@ -6,5 +6,5 @@
 <h3><p>First all recipe name are converted to vectors using TfidfVectorizer and vectors are pass to sigmoid kernel activation</p></h3>
 <h3><p>Reverse mapping of indices and dish name are created. and preditions are done using pairwsie similarity scores.</p></h3>
 <h3>Flask Web Framework is used for deployment and application is hosted on Heroku server.</h3>
-<img src="/Flask.PNG" alt="" width="800" height="450">
+<img src="/Flask.PNG" alt="" width="300" height="300">
 demo- https://recipeingredientsprediction.herokuapp.com/
